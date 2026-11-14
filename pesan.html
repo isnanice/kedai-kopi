@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Pemesanan - Sudo Sruput</title>
+</head>
+<body>
+  <header>
+    <h1>Sudo Sruput</h1>
+    <p>Akses penuh ke kopi, tanpa permission denied.</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="menu.html">Daftar Menu</a></li>
+        <li><a href="pesan.html">Pemesanan</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Formulir Pemesanan Kopi Online</h2>
+    <p>Silakan isi data formulir di bawah ini dengan lengkap untuk memesan minuman favorit Anda.</p>
+
+    <form method="get" action="pesan.html">
+      <p>
+        <label for="nama">Nama Pemesan:</label><br>
+        <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap">
+      </p>
+
+      <p>
+        <label for="wa">Nomor WhatsApp:</label><br>
+        <input type="tel" id="wa" name="wa" required
+        inputmode="numeric" pattern="[0-9]{10,15}" maxlength="15"
+        placeholder="081234567890">
+      </p>
+
+      <p>
+        <label for="menu">Pilihan Menu:</label><br>
+        <select id="menu" name="menu" required>
+          <option value="">Silakan pilih menu</option>
+          <optgroup label="Kategori Kopi">
+            <option value="espresso">Espresso (Rp18.000)</option>
+            <option value="americano">Americano (Rp22.000)</option>
+            <option value="caffe_latte">Caffe Latte (Rp26.000)</option>
+            <option value="kopi_susu_aren">Kopi Susu Gula Aren (Rp24.000)</option>
+          </optgroup>
+          <optgroup label="Kategori Non Kopi">
+            <option value="matcha_latte">Matcha Green Tea Latte (Rp28.000)</option>
+            <option value="chocolate_signature">Chocolate Signature (Rp26.000)</option>
+            <option value="earl_grey_tea">Earl Grey Artisan Tea (Rp20.000)</option>
+          </optgroup>
+        </select>
+      </p>
+
+      <p>
+        <label for="jumlah">Jumlah:</label><br>
+        <input type="number" id="jumlah" name="jumlah" min="1" max="10" value="1" required>
+      </p>
+
+      <fieldset>
+        <legend>Cara Pengambilan:</legend>
+        <p>
+          <input type="radio" id="ambil_tempat" name="cara_ambil" value="ambil_di_tempat" required>
+          <label for="ambil_tempat">Ambil di tempat</label>
+        </p>
+        <p>
+          <input type="radio" id="diantar" name="cara_ambil" value="diantar">
+          <label for="diantar">Diantar</label>
+        </p>
+      </fieldset>
+
+      <p>
+        <label for="catatan">Catatan (opsional):</label><br>
+        <textarea id="catatan" name="catatan" rows="4" cols="40" placeholder="Contoh: Less ice, gula sedikit, dll."></textarea>
+      </p>
+
+      <p>
+        <button type="submit">Kirim</button>
+      </p>
+    </form>
+  </main>
+
+  <footer>
+    <p><strong>Alamat:</strong> Jl. Prof. Soedarto, S.H., Tembalang, Semarang, Jawa Tengah 50275</p>
+    <p><strong>Jam Buka:</strong> Senin – Jumat (08.00 – 22.00 WIB) | Sabtu – Minggu (09.00 – 23.00 WIB)</p>
+    <p>&copy; 2026 Sudo Sruput. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
+
