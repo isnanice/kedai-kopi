@@ -1,4 +1,4 @@
-
+Repository: https://github.com/isnanice/kedai-kopi.git
 
 # Sudo Sruput - Tugas Praktik Minggu 3
 
