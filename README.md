@@ -70,78 +70,36 @@ Aturan CSS yang awalnya tidak berlaku adalah `margin-bottom: 1.25rem` pada selec
 ---
 
 # Sudo Sruput - Tugas Praktik Minggu 2
- 
-Website statis untuk kedai kopi fiktif Sudo Sruput, dibuat dengan HTML saja.
- 
-Isi folder:
-- `index.html` : Halaman beranda (sambutan, gambar, jam buka)
-- `menu.html` : Daftar menu (kategori Kopi dan Non Kopi)
-- `pesan.html` : Formulir pemesanan
-- `img/kopi.svg` : Berkas gambar pendukung beranda
-- `README.md` : Jawaban refleksi dan evaluasi tugas
+
+Website statis Sudo Sruput merupakan proyek praktik pengembangan web menggunakan HTML5 murni tanpa CSS. Website ini terdiri dari tiga halaman utama, yaitu Beranda, Daftar Menu, dan Pemesanan, yang dirancang untuk memberikan informasi mengenai kedai kopi serta menyediakan formulir pemesanan online
+
+## Susunan Folder
+- `index.html` : Halaman beranda (sambutan, gambar suasana kedai, dan jam buka)
+- `menu.html` : Daftar menu dalam kategori Kopi dan Non Kopi
+- `pesan.html` : Formulir pemesanan online
+- `img/suasana-sudosruput.svg` : Gambar ilustrasi suasana kedai untuk beranda
+- `README.md` : Jawaban pertanyaan refleksi langkah 6
 
 
-## Jawaban Pertanyaan Refleksi (Langkah 6)
+## Jawaban Langkah 6
 
+### 6a. Apa yang muncul di address bar setelah form dikirim, dan mengapa data form tampil di sana? Hubungkan dengan materi method HTTP di Minggu 1.
+Saat saya mencoba mengirim form dengan field wajib (`Nama Pemesan` atau `Nomor WhatsApp`) yang masih kosong, browser menahan pengiriman dan memunculkan pesan peringatan bawaan karena field tersebut diberi atribut `required`. Address bar tidak berubah.
 
-### Pertanyaan A
-> **Apa yang muncul di address bar setelah form dikirim, dan mengapa data form tampil di sana? Hubungkan dengan materi method HTTP di Minggu 1.**
+Setelah semua field diisi lengkap dan tombol **Kirim** diklik, browser memuat ulang `pesan.html` dan URL di address bar berubah menjadi:
+`http://127.0.0.1:5500/pesan.html?nama=Isna&wa=081234567890&menu=caffe_latte&jumlah=1&cara_ambil=ambil_di_tempat&catatan=`
 
+Di belakang nama berkas `pesan.html`, muncul tanda tanya (`?`) yang diikuti oleh query string (parameter URL) berisi pasangan `name=value` yang dipisahkan tanda ampersand (`&`):
+- Nama kunci diambil dari atribut `name` pada masing-masing elemen input, sedangkan nilainya diambil dari isian pengguna (untuk `<select>` dan `<input type="radio">`, nilai yang dikirim adalah isi atribut `value` seperti `caffe_latte` dan `ambil_di_tempat`).
+- Jika isian mengandung spasi atau karakter khusus, browser mengubahnya menggunakan URL Encoding / Percent-Encoding (misalnya spasi menjadi `+` atau `%20`).
+- Kolom catatan tetap ikut terkirim dengan nilai kosong (`catatan=`).
 
-**Jawaban:**
-1. **Apa yang muncul di address bar:**  
-   Setelah menekan tombol "Kirim Pemesanan", URL pada *address bar* browser berubah. Di belakang nama file target (`pesan.html`), muncul karakter tanda tanya (`?`) yang diikuti oleh serangkaian pasangan nama atribut input dan nilai isian (*key-value pair*) yang dipisahkan oleh karakter ampersand (`&`). Bentuk ini dikenal sebagai **query string**.  
-   
-   *Contoh tampilan di address bar:*
-   ```text
-   pesan.html?nama=Budi+Santoso&wa=08123456789&menu=kopi_susu_aren&jumlah=2&cara_ambil=ambil_di_tempat&catatan=Kurangi+es
-   ```
-   Karakter spasi secara otomatis diubah menjadi tanda tambah (`+`) atau kode heksadesimal `%20` melalui mekanisme *URL Encoding / Percent-Encoding*.
+**Hubungan dengan materi HTTP Method di Minggu 1:**
+Data form tampil di address bar karena elemen `<form>` menggunakan `method="get"`. Pada materi protokol HTTP Minggu 1, `GET` adalah HTTP method yang bersifat Safe dan Idempotent yang digunakan untuk meminta/mengambil sumber daya (*resource*) dari server, sehingga HTTP request dengan `GET` tidak memiliki *request body*. Karena tidak ada *body*, satu-satunya cara browser mengirimkan data isian form adalah dengan menempelkannya ke dalam query string pada URL di baris pertama HTTP request (Request Line). Sebaliknya, jika form menggunakan `method="post"`, data isian dikirim di dalam *request body* sehingga tidak muncul di address bar. Selain itu, halaman terlihat tidak berubah setelah submit karena Live Server bekerja sebagai Static Web Server yang hanya mengirimkan berkas HTML apa adanya tanpa memproses data query string tersebut.
 
+### 6b. Pilih satu bagian halamanmu yang memakai element semantic. Mengapa kamu memilih element itu dan bukan &lt div&gt;? `<div>`
+Saya memilih elemen `<nav>` yang membungkus daftar tautan ke tiga halaman (`Beranda`, `Daftar Menu`, dan `Pemesanan`) di dalam `<header>`.
 
-2. **Mengapa data form tampil di sana (Hubungan dengan Method HTTP):**  
-   - Pada form di `pesan.html`, kita mendefinisikan atribut `method="get"`.
-   - Berdasarkan materi dasar protokol HTTP di Minggu 1, metode `GET` digunakan secara semantik untuk **meminta atau mengambil (*retrieve*) resource dari server**, bukan untuk menyimpan atau mengubah status resource di server secara permanen.
-   - Sesuai spesifikasi protokol HTTP, sebuah HTTP request yang menggunakan metode `GET` **tidak memiliki *request body*** (atau *body*-nya kosong). Oleh karena itu, satu-satunya cara browser dapat mengirimkan parameter atau input formulir kepada server adalah dengan menempelkannya langsung ke dalam baris URI permintaan (*Request-URI*) di baris pertama request HTTP (*Request Line*), yaitu melalui *query string*.
-   - Sebaliknya, jika form menggunakan atribut `method="post"`, data formulir akan dikemas dan disembunyikan di dalam *request body* (dengan header `Content-Type: application/x-www-form-urlencoded` atau `multipart/form-data`), sehingga data tersebut tidak terpampang secara kasat mata pada address bar browser.
-
-
----
-
-
-### Pertanyaan B
-> **Pilih satu bagian halamanmu yang memakai element semantic. Mengapa kamu memilih element itu dan bukan `<div>`?**
-
-
-**Jawaban:**
-Bagian yang saya pilih adalah elemen **`<nav>`** yang membungkus daftar tautan navigasi utama website pada bagian `<header>` di ketiga halaman (`index.html`, `menu.html`, dan `pesan.html`):
-
-
-```html
-<nav>
-  <ul>
-    <li><a href="index.html">Beranda</a></li>
-    <li><a href="menu.html">Daftar Menu</a></li>
-    <li><a href="pesan.html">Pemesanan</a></li>
-  </ul>
-</nav>
-```
-
-
-**Alasan memilih `<nav>` dan bukan `<div>`:**
-
-
-1. **Memberikan Makna Semantik yang Jelas (*Meaning and Semantics*):**  
-   Tag `<div>` adalah elemen pembungkus generik non-semantik (*non-semantic division container*). Tag `<div>` sama sekali tidak memberi tahu browser, peramban mesin pencari, maupun manusia tentang apa peran konten di dalamnya. Sebaliknya, elemen `<nav>` secara eksplisit menyatakan bahwa blok tersebut berisi **tautan navigasi utama** untuk menjelajahi situs web.
-
-
-2. **Aksesibilitas dan Teknologi Asistif (*Web Accessibility / a11y*):**  
-   Elemen `<nav>` secara bawaan (*native*) memiliki peran landmark ARIA (`role="navigation"`). Pengguna penyandang disabilitas netra yang menggunakan *screen reader* (seperti NVDA, JAWS, atau VoiceOver) dapat memanfaatkan tombol pintas navigasi untuk langsung melompat (*jump to landmark*) ke menu navigasi tanpa harus mendengarkan pembacaan elemen pembuka lainnya dari awal baris demi baris. Jika kita hanya memakai `<div>`, screen reader memperlakukannya sebagai blok teks biasa, sehingga navigasi menjadi jauh lebih sulit diakses.
-
-
-3. **Optimasi Mesin Pencari (*Search Engine Optimization / SEO*):**  
-   Mesin pencari seperti Googlebot membaca dokumen HTML untuk memahami struktur dan hierarki sebuah situs web. Dengan menandai tautan menggunakan `<nav>`, web crawler dapat mengenali arsitektur halaman dengan tepat dan membedakan antara tautan navigasi utama situs dengan tautan sekunder atau tautan konten biasa.
-
-
-4. **Keterbacaan dan Kemudahan Perawatan Kode (*Maintainability*):**  
-   Menggunakan elemen semantik seperti `<header>`, `<nav>`, `<main>`, `<section>`, dan `<footer>` mencegah terjadinya *“div soup”* (tumpukan tag `<div>` bersarang tanpa makna). Kode HTML menjadi jauh lebih rapi, terstruktur secara logis, dan mudah dipahami oleh pengembang lain saat bekerja dalam tim.
+Secara tampilan polos tanpa CSS, `<nav>` dan `<div>` memang terlihat sama. Namun, `<div>` hanyalah wadah generik non-semantik yang tidak memberikan informasi apa pun mengenai fungsi konten di dalamnya. Dengan memakai `<nav>`:
+1. Aksesibilitas (*Screen Reader*): Browser dan teknologi asistif seperti *screen reader* langsung mengenali blok tersebut sebagai landmark navigasi utama, sehingga pengguna tunanetra bisa langsung melompat ke menu navigasi tanpa harus mendengarkan pembacaan halaman dari awal.
+2. Struktur & Keterbacaan Kode: Mesin pencari (*search engine*) dapat membedakan mana tautan navigasi utama situs dan mana tautan biasa di dalam konten, serta kode HTML menjadi jauh lebih jelas dibaca tanpa menumpuk tag `<div>` (*div soup*).
