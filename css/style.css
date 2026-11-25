@@ -1,0 +1,362 @@
+
+/* ==========================================================================
+   PALET WARNA
+   Hijau Lumut Gelap  #364033
+   Krem Hangat        #E7DCCB
+   Oranye Terakota    #E25822
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. RESET & DASAR
+   ========================================================================== */
+
+   *,
+   *::before,
+   *::after {
+       box-sizing: border-box;
+   }
+   
+   body {
+       margin: 0;
+       font-family: "Segoe UI", Roboto, sans-serif;
+       font-size: 1rem;
+       line-height: 1.6;
+       color: #364033;
+       background-color: #E7DCCB;
+   }
+   
+   
+   /* Gambar Responsif */
+   
+   img {
+       max-width: 100%;
+       height: auto;
+       display: block;
+       border-radius: 6px;
+   }
+   
+   figure {
+       margin: 1.5rem 0;
+   }
+   
+   figcaption {
+       margin-top: 0.5rem;
+       font-size: 0.9rem;
+       font-style: italic;
+       color: #364033;
+   }
+   
+   
+   /* Tipografi Heading */
+   
+   h1, h2, h3 {
+       line-height: 1.3;
+   }
+   
+   h1 {
+       font-size: 1.75rem;
+       margin: 0 0 0.25rem 0;
+   }
+   
+   h2 {
+       font-size: 1.35rem;
+       margin-top: 1.75rem;
+       margin-bottom: 0.75rem;
+       color: #364033;
+   }
+   
+   
+   /* ==========================================================================
+      2. HEADER & NAVIGASI (FLEXBOX - MOBILE FIRST)
+      ========================================================================== */
+   
+   header {
+       display: flex;
+       flex-direction: column;
+       gap: 1rem;
+       max-width: 960px;
+       margin: 0 auto;
+       padding: 1rem;
+       background-color: #364033;
+   }
+   
+   .brand h1 {
+       margin: 0;
+       color: #E25822;
+   }
+   
+   .brand p {
+       margin: 0.25rem 0 0 0;
+       font-size: 0.95rem;
+       color: #E7DCCB;
+   }
+   
+   .nav-list {
+       display: flex;
+       flex-direction: column;
+       gap: 0.5rem;
+       list-style: none;
+       padding: 0;
+       margin: 0;
+   }
+   
+   .nav-list a {
+       display: inline-block;
+       padding: 0.5rem 0.85rem;
+       color: #E7DCCB;
+       text-decoration: none;
+       font-weight: 600;
+       border-radius: 4px;
+       transition: background-color 0.2s, color 0.2s;
+   }
+   
+   .nav-list a:hover,
+   .nav-list a:focus {
+       background-color: #E25822;
+       color: #E7DCCB;
+   }
+   
+   
+   /* Tablet & Desktop (>= 600px) */
+   
+   @media screen and (min-width: 600px) {
+       header {
+           flex-direction: row;
+           justify-content: space-between;
+           align-items: center;
+       }
+   
+       .nav-list {
+           flex-direction: row;
+           gap: 0.5rem;
+       }
+   }
+   
+   
+   /* ==========================================================================
+      3. MAIN - KONTEN UTAMA
+      ========================================================================== */
+   
+   main {
+       max-width: 960px;
+       margin: 0 auto;
+       padding: 1rem;
+       background-color: #E7DCCB;
+       color: #364033;
+   }
+   
+   
+   /* Link umum dalam konten */
+   
+   main a {
+       color: #E25822;
+       font-weight: 600;
+       text-decoration: underline;
+   }
+   
+   main a:hover,
+   main a:focus {
+       color: #364033;
+   }
+   
+   
+   /* ==========================================================================
+      4. DAFTAR MENU - CARD GRID (MOBILE FIRST)
+      ========================================================================== */
+   
+   
+   /* Grid: 1 kolom (ponsel) */
+   
+   .menu-grid {
+       display: grid;
+       grid-template-columns: 1fr;
+       gap: 1.25rem;
+       width: 100%;
+   }
+   
+   
+   /* Tampilan setiap card */
+   
+   .card {
+       display: flex;
+       flex-direction: column;
+       padding: 1.25rem;
+       background-color: #364033;
+       border: 2px solid #364033;
+       border-radius: 8px;
+       color: #E7DCCB;
+   }
+   
+   
+   /* Nama menu */
+   
+   .card h3 {
+       margin: 0 0 0.5rem 0;
+       font-size: 1.15rem;
+       color: #E7DCCB;
+   }
+   
+   
+   /* Harga menu */
+   
+   .card .price {
+       margin: 0 0 0.5rem 0;
+       font-weight: 700;
+       color: #E25822;
+   }
+   
+   
+   /* Deskripsi menu */
+   
+   .card p:last-child {
+       margin: 0;
+       font-size: 0.95rem;
+       line-height: 1.5;
+       color: #E7DCCB;
+   }
+   
+   
+   /* 2 kolom (>= 600px) */
+   
+   @media screen and (min-width: 600px) {
+       .menu-grid {
+           grid-template-columns: repeat(2, 1fr);
+       }
+   }
+   
+   
+   /* 3 kolom (>= 960px) */
+   
+   @media screen and (min-width: 960px) {
+       .menu-grid {
+           grid-template-columns: repeat(3, 1fr);
+       }
+   }
+   
+   
+   /* ==========================================================================
+      5. FORM PEMESANAN (PESAN.HTML)
+      ========================================================================== */
+   
+   form {
+       max-width: 600px;
+   }
+   
+   form p {
+       margin-bottom: 1.25rem;
+   }
+   
+   label {
+       display: block;
+       margin-bottom: 0.4rem;
+       font-weight: 600;
+       color: #364033;
+   }
+   
+   fieldset {
+       border: 2px solid #364033;
+       border-radius: 6px;
+       padding: 1rem;
+       margin-bottom: 1.25rem;
+   }
+   
+   legend {
+       font-weight: 600;
+       color: #364033;
+       padding: 0 0.5rem;
+   }
+   
+   fieldset p {
+       margin-bottom: 0.5rem;
+   }
+   
+   fieldset p:last-child {
+       margin-bottom: 0;
+   }
+   
+   fieldset label {
+       display: inline;
+       font-weight: normal;
+       margin-left: 0.35rem;
+       cursor: pointer;
+   }
+   
+   
+   /* Tampilan field formulir */
+   
+   input[type="text"],
+   input[type="tel"],
+   input[type="number"],
+   select,
+   textarea {
+       width: 100%;
+       padding: 0.65rem 0.75rem;
+       font-family: inherit;
+       font-size: 1rem;
+       color: #364033;
+       background-color: #E7DCCB;
+       border: 2px solid #364033;
+       border-radius: 4px;
+       transition: border-color 0.2s, outline 0.2s;
+   }
+   
+   
+   /* Tampilan :focus pada field aktif */
+   
+   input:focus,
+   select:focus,
+   textarea:focus {
+       border-color: #E25822;
+       outline: 2px solid #E25822;
+       outline-offset: 1px;
+   }
+   
+   
+   /* Gaya Tombol Kirim */
+   
+   button[type="submit"],
+   button {
+       display: inline-block;
+       padding: 0.75rem 2rem;
+       font-family: inherit;
+       font-size: 1rem;
+       font-weight: 600;
+       color: #E7DCCB;
+       background-color: #E25822;
+       border: none;
+       border-radius: 4px;
+       cursor: pointer;
+       transition: background-color 0.2s;
+   }
+   
+   button[type="submit"]:hover,
+   button:hover {
+       background-color: #364033;
+       color: #E7DCCB;
+   }
+   
+   button[type="submit"]:focus,
+   button:focus {
+       outline: 2px solid #364033;
+       outline-offset: 2px;
+   }
+   
+   
+   /* ==========================================================================
+      6. FOOTER
+      ========================================================================== */
+   
+   footer {
+       max-width: 960px;
+       margin: 0 auto;
+       padding: 1.5rem 1rem;
+       background-color: #364033;
+       font-size: 0.9rem;
+       color: #E7DCCB;
+   }
+   
+   footer p {
+       margin: 0.35rem 0;
+   }
+   

@@ -4,13 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form Pemesanan - Sudo Sruput</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
-    <h1>Sudo Sruput</h1>
-    <p>Akses penuh ke kopi, tanpa permission denied.</p>
+    <div class="brand">
+      <h1>Sudo Sruput</h1>
+      <p>Akses penuh ke kopi, tanpa permission denied.</p>
+    </div>
     <nav>
-      <ul>
+      <ul class="nav-list">
         <li><a href="index.html">Beranda</a></li>
         <li><a href="menu.html">Daftar Menu</a></li>
         <li><a href="pesan.html">Pemesanan</a></li>
@@ -24,19 +27,18 @@
 
     <form method="get" action="pesan.html">
       <p>
-        <label for="nama">Nama Pemesan:</label><br>
+        <label for="nama">Nama Pemesan:</label>
         <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap">
       </p>
 
       <p>
-        <label for="wa">Nomor WhatsApp:</label><br>
-        <input type="tel" id="wa" name="wa" required
-        inputmode="numeric" pattern="[0-9]{10,15}" maxlength="15"
-        placeholder="081234567890">
+        <label for="wa">Nomor WhatsApp:</label>
+        <input type="tel" id="wa" name="wa" required inputmode="numeric" pattern="[0-9]{10,15}" maxlength="15"
+          placeholder="081234567890">
       </p>
 
       <p>
-        <label for="menu">Pilihan Menu:</label><br>
+        <label for="menu">Pilihan Menu:</label>
         <select id="menu" name="menu" required>
           <option value="">Silakan pilih menu</option>
           <optgroup label="Kategori Kopi">
@@ -54,7 +56,7 @@
       </p>
 
       <p>
-        <label for="jumlah">Jumlah:</label><br>
+        <label for="jumlah">Jumlah:</label>
         <input type="number" id="jumlah" name="jumlah" min="1" max="10" value="1" required>
       </p>
 
@@ -71,8 +73,9 @@
       </fieldset>
 
       <p>
-        <label for="catatan">Catatan (opsional):</label><br>
-        <textarea id="catatan" name="catatan" rows="4" cols="40" placeholder="Contoh: Less ice, gula sedikit, dll."></textarea>
+        <label for="catatan">Catatan (opsional):</label>
+        <textarea id="catatan" name="catatan" rows="4" cols="40"
+          placeholder="Contoh: Less ice, gula sedikit, dll."></textarea>
       </p>
 
       <p>
@@ -88,4 +91,3 @@
   </footer>
 </body>
 </html>
-
